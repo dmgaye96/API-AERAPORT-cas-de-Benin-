@@ -72,6 +72,11 @@ $table_leght = count($obj->data);
     .pagination .page-item.active .page-link: survol {
         couleur de fond: #03a9f4;
     }
+
+    .new:after {
+    content: ''!important;
+    display: none !important;
+}
 </style>
 <body>
 <h5 class="light-blue-text">Depart  du Jour</h5>
@@ -104,7 +109,8 @@ echo $newDate; ?></td>
                     <td><?php echo $obj->data[$i]->airline->name; ?></td>
                     <td><?php echo $obj->data[$i]->flight->number; ?></td>
                     <td><?php echo $obj->data[$i]->arrival->airport; ?></td>
-                    <td><?php echo $obj->data[$i]->flight_status == 'landed' ? 'Atterie' : '' ,$obj->data[$i]->flight_status == 'active' ? 'Decollé' : '' , $obj->data[$i]->flight_status == 'scheduled' ? 'Programme' : ''; ?></td>
+                    <td><?php echo $obj->data[$i]->flight_status == 'landed' ? "<span class='new badge green'>Atterie </span> ": '' ,$obj->data[$i]->flight_status == 'active' ? "<span class='new badge red'>Decollé</span> " : '' , $obj->data[$i]->flight_status == 'scheduled' ? "<span class='new badge  orange'>Prévu</span>" : ''; ?></td>
+
 
             </tr>
             <?php    
